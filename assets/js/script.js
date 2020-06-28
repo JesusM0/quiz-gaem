@@ -5,6 +5,7 @@
 // Create Timer Function
 // Create array of Questions
 // Create function to display questions and choices
+// Check if Choices Were Correct or Wrong
 
 //Basic HTML Elements Here
 var headEl = document.querySelector("header");
@@ -24,9 +25,9 @@ var choiceTwo = document.querySelector("#btn-2");
 var choiceThree = document.querySelector("#btn-3");
 var choiceFour = document.querySelector("#btn-4");
 
-// Moved questions Array here becuase getting error for var Index
-const myQuestions = [
-    {question: "Inside which HTML element do we put the JavaScript?", option1: "<js>", option2: "<script>", option3: "<javascript>", option4: "<scripting>", answer: "4" },
+// Moved questions Array here because getting error for var Index
+var myQuestions = [
+    {question: "Inside which HTML element do we put the JavaScript?", option1: "<js>", option2: "<script>", option3: "<javascript>", option4: "<scripting>", answer: "2" },
     {question: "Which of the following is not a valid JavaScript variable name?", option1: "2names", option2: "_first_and_last_names", option3: "FirstAndLast", option4: "None of the above", answer: "1" },
     {question: "What is the correct JavaScript syntax to write 'Hello World?'", option1: "System.out.println('Hello World')", option2: "println ('Hello World')", option3: "document.write('Hello World')", option4: "response.write('Hello World')", answer: "3" },
     {question: "JavaScript entities start with _______ and end with _________.", option1: "Semicolon, colon", option2: "Semicolon, Ampersand", option3: "Ampersand, colon", option4: "Ampersand, Semicolon", answer: "4" },
@@ -44,7 +45,7 @@ var score = 0;
 //Add New countdown var
 var countdown = "";
 // Lets try creating a index counter for the questions array??
-var arrayIndex = myQuestions.length-1;
+var arrayIndex = 0;
 
 //First 
 var quizStart = function() {
@@ -71,8 +72,6 @@ var timer = function() {
     remainingTime--;
 };
 
-
-
 var quizQuestions = function() {
     // Try to use textcontent to display questions and answers?
     questionEl.textContent = myQuestions[arrayIndex].question;
@@ -82,5 +81,30 @@ var quizQuestions = function() {
     choiceFour.textContent = "4. " + myQuestions[arrayIndex].option4;
 };
 
+function checkAnswer(answers) {
+    // I can use an if statment here to check if answer is correct maybe?
+    if (answers == myQuestions[arrayIndex].answer) {
+        score += 15;
+        bodyEl.setAttribute("style", "background-color:rgb(0, 255, 0)");
+        setTimeout(removeBodyAtt, 1000*.100);
+    }
+    // If its wrong just remove time?
+    else {
+        remainingTime -= 10;
+        bodyEl.setAttribute("style", "background-color:rgb(255, 0, 0)");
+        setTimeout(removeBodyAtt, 1000*.100);
+    }
+};
+
+var removeBodyAtt = function() {
+    bodyEl.setAttribute("style", "background-color:rgb(30,30,30,1)");
+}
+
 //Run quizStart();
 startBtn.onclick = quizStart;
+
+//Choices listeners
+choiceOne.addEventListener("click", function() {checkAnswer(1)});
+choiceTwo.addEventListener("click", function() {checkAnswer(2)});
+choiceThree.addEventListener("click", function() {checkAnswer(3)});
+choiceFour.addEventListener("click", function() {checkAnswer(4)});
