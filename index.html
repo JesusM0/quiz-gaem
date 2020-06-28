@@ -10,18 +10,24 @@
 
 <body>
     <header>
-        <p id="high-scores">View High Scores</p>
+        <p id="view-scores">View High Scores</p>
         <p>Time: <span id="timer">100</span></p>
     </header>
 
     <main class="page-content" id="page-content">
-        <h1>Welcome to: Coding Quiz!</h1>
-        <h2>Do you Know Everything About JavaScript?</h2>
+        <h1 id="page-title">Welcome to: Coding Quiz!</h1>
+        <p>Do You Know Everything About JavaScript <br>Each Correct Answer awards points <br> While Each Incorrect Deducts 10 Seconds Off The Timer!</p>
+        <button type="submit" id="start" class="start btn">Begin Quiz!</button>
+        <section id="quiz-question">
+            <p id="questions"> </p>
+        </section>
+        <div id="choices" class="hide">
+            <button type="submit" class="choice btn" id="btn-1">Choice 1</button>
+            <button type="submit" class="choice btn" id="btn-2">Choice 2</button>
+            <button type="submit" class="choice btn" id="btn-3">Choice 3</button>
+            <button type="submit" class="choice btn" id="btn-4">Choice 4</button>
+        </div>
     </main>
-
-    <footer>
-
-    </footer>
     <script src="./assets/js/script.js"></script>
 </body>
 

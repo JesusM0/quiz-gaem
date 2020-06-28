@@ -5,6 +5,10 @@
     text-align: center;
 }
 
+.hide {
+    display: none;
+}
+
 /* These Colors Rock! */
 :root {
     --primary: rgb(153, 42, 65);
@@ -17,7 +21,7 @@
   
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: var(--secondary);
+    color: var(--light);
     background-color: rgb(60, 60, 70);
     line-height: 1.5;
 }
@@ -38,12 +42,45 @@ header p{
     font-size: 1.4rem;
 }
 
-#high-scores {
+#view-scores {
     cursor: pointer;
     transition: all 1s ease-in;
 }
 
-#high-scores:hover{
+#view-scores:hover{
     font-style: italic;
     font-weight: bold;
+}
+
+.page-content p{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+button{
+    display: inline-block;
+}
+
+.btn {
+    background-color: var(--primary);
+    color: var(--light);
+    font-size: 20px;
+    padding: 5px 5px;
+    border: dotted;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+}
+
+.btn:hover {
+    font-style: italic;
+    background-color: var(--primary);
+    font-weight: bolder;
+    border: solid;
+    box-shadow: 0 0 0 3px var(--light);
+}
+
+.start {
+    font-size: 30px;
+    width: 200px;
 }
