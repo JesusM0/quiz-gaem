@@ -1,4 +1,4 @@
-//Note To Self: Make Sure to Console.log to check if selected correctly
+// Note To Self: Make Sure to Console.log to check if selected correctly
 // Lets First declare selectors
 // Any essential variables
 // Create Start Function
@@ -6,6 +6,7 @@
 // Create array of Questions
 // Create function to display questions and choices
 // Check if Choices Were Correct or Wrong
+// Move to next questions?
 
 //Basic HTML Elements Here
 var headEl = document.querySelector("header");
@@ -17,6 +18,8 @@ var viewEL = document.querySelector("#view-scores");
 var timerEl = document.querySelector("#timer");
 var questionEl = document.querySelector("#question");
 var choicesEl = document.querySelector("#choices");
+var scoresEl = document.querySelector("#score-form");
+var namesEl = document.querySelector("#name-entry")
 
 //Button Selectors Here
 var startBtn = document.querySelector("#start");
@@ -87,14 +90,35 @@ function checkAnswer(answers) {
         score += 15;
         bodyEl.setAttribute("style", "background-color:rgb(0, 255, 0)");
         setTimeout(removeBodyAtt, 1000*.100);
+        gameOver();
     }
     // If its wrong just remove time?
     else {
         remainingTime -= 10;
         bodyEl.setAttribute("style", "background-color:rgb(255, 0, 0)");
         setTimeout(removeBodyAtt, 1000*.100);
+        gameOver();
     }
 };
+
+var gameOver = function() {
+    if (arrayIndex == myQuestions.length-1 || remainingTime <= 0) {
+        clearInterval(countdown);
+        //We will have to hide the choices elements to display the next "screen"
+        choicesEl.classList.add("hide");
+        //Need to create function that ends game here
+        endGame();
+    }
+    else {
+        arrayIndex++;
+        quizQuestions();
+    }
+}
+
+var endGame = function() {
+    scoresEl.classList.remove('hide');
+    questionEl.textContent = "You Received: " + score + "pts!";
+}
 
 var removeBodyAtt = function() {
     bodyEl.setAttribute("style", "background-color:rgb(30,30,30,1)");
